@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
@@ -42,12 +42,12 @@ public class CacheConfig extends CachingConfigurerSupport {
 			}
 		};
 	}
-	
+
 	/**
 	 * 定义缓存到那种缓存技术中
 	 */
 	@Bean
-	@ConditionalOnClass(RedisConfig.class)
+	@ConditionalOnBean(RedisConfig.class)
 	@ConditionalOnMissingBean
 	public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory) {
 		return RedisCacheManager.create(connectionFactory);

@@ -7,7 +7,7 @@ import lombok.Setter;
 import springfox.documentation.spi.DocumentationType;
 
 /**
- * @description swagger自动装备配置文件
+ * @description swagger2自动装配配置文件
  * @author ParadiseWY
  * @date 2019年7月9日 上午9:32:26
  */
