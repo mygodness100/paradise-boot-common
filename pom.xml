@@ -40,6 +40,10 @@
 			<artifactId>spring-session-data-redis</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.github.mygodness100</groupId>
 			<artifactId>SimpleUtils</artifactId>
 			<version>${simpleutils.version}</version>
