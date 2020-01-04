@@ -42,8 +42,10 @@ public class Swagger2AutoConfiguration {
 								.apis(RequestHandlerSelectors.basePackage(
 										StrUtils.isBlank(properties.getBasePackage()) ? "com.wy.crl"
 												: properties.getBasePackage()))
-								.paths(PathSelectors.any()).build()
-								.ignoredParameterTypes(properties.getIgnoredParameterTypes());
+								.paths(PathSelectors.any()).build().ignoredParameterTypes(
+										Objects.isNull(properties.getIgnoredParameterTypes())
+												? new Class[] {}
+												: properties.getIgnoredParameterTypes());
 	}
 
 	private ApiInfo createApiInfo(Swagger2Properties properties) {
