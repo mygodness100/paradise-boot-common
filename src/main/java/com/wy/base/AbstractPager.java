@@ -15,14 +15,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class AbstractPager {
+
 	@Transient
 	@JSONField(serialize = false)
 	private Integer pageSize;
-	
+
 	@Transient
 	@JSONField(serialize = false)
 	private Integer pageIndex;
-	
+
 	public boolean hasPager() {
 		if (pageIndex == null || pageIndex <= 0) {
 			return false;
