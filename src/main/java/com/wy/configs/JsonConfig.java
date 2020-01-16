@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 
@@ -32,6 +33,10 @@ public class JsonConfig {
 				SerializerFeature.WriteNullStringAsEmpty, SerializerFeature.WriteNullListAsEmpty,
 				SerializerFeature.WriteMapNullValue,
 				SerializerFeature.DisableCircularReferenceDetect);
+		// jpa中hibernate的bug,需要剔除掉该字段,否则序列化失败
+		SimplePropertyPreFilter preFilter = new SimplePropertyPreFilter();
+		preFilter.getExcludes().add("hibernateLazyInitializer");
+		fastJsonConfig.setSerializeFilters(preFilter);
 		/**--- 若数据库字段全为大写,且使用了fastjson代替jackjson,可使用如下配置 ---**/
 //		SerializeConfig parser = new SerializeConfig();
 //		// 解决swagger2在将字段都变成大写之后无法访问的问题
