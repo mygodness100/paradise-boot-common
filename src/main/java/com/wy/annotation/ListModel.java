@@ -6,7 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.wy.base.AbstractPage;
+import com.wy.base.BasePage;
 
 /**
  * @apiNote 分页专用,值为分页参数类
@@ -18,5 +18,5 @@ import com.wy.base.AbstractPage;
 @Documented
 public @interface ListModel {
 
-	Class<? extends AbstractPage> value();
+	Class<? extends BasePage> value();
 }
