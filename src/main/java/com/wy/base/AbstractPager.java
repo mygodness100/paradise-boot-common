@@ -24,6 +24,14 @@ public abstract class AbstractPager {
 	@JSONField(serialize = false)
 	private Integer pageIndex;
 
+	@Transient
+	@JSONField(serialize = false)
+	private String begintime;
+
+	@Transient
+	@JSONField(serialize = false)
+	private String endtime;
+
 	public boolean hasPager() {
 		if (pageIndex == null || pageIndex <= 0) {
 			return false;
