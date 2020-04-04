@@ -47,7 +47,7 @@ public class SpringContextUtils implements InitializingBean, ApplicationContextA
 	}
 
 	/**
-	 * 根据bean的class来查找对象
+	 * @apiNote根据bean的class来查找对象
 	 * @param c 需要查找的类字节码
 	 * @return 对象
 	 */
@@ -56,7 +56,7 @@ public class SpringContextUtils implements InitializingBean, ApplicationContextA
 	}
 
 	/**
-	 * 根据bean的beanName来查找对象
+	 * @apiNote根据bean的beanName来查找对象
 	 * @param beanName spring组件中定义的value,若是不写,默认为类名首字母小写
 	 * @return 对象,需强转
 	 */
@@ -65,11 +65,28 @@ public class SpringContextUtils implements InitializingBean, ApplicationContextA
 	}
 
 	/**
-	 * 根据bean的class来查找所有的对象(包括子类)
-	 * @param c 父类字节码
+	 * @apiNote根据bean的class来查找所有的对象(包括子类) @param c 父类字节码
 	 * @return 所有子类
 	 */
 	public static <T> Map<String, T> getBeansOfType(Class<T> clazz) {
 		return applicationContext.getBeansOfType(clazz);
+	}
+
+	/**
+	 * @apiNote 如果context中包含一个与所给名称匹配的bean定义则返回true
+	 * @param beanName spring组件的name
+	 * @return boolean 是否存在
+	 */
+	public static boolean containsBean(String beanName) {
+		return applicationContext.containsBean(beanName);
+	}
+
+	/**
+	 * @apiNote 根据beanName返回该组件的具体字节码类
+	 * @param beanName spring组件的name
+	 * @return Class 注册对象的类型
+	 */
+	public static Class<?> getType(String beanName) {
+		return applicationContext.getType(beanName);
 	}
 }
